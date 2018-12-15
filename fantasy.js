@@ -18,7 +18,11 @@ let fantasyName;
   real last name.
 *******************************************************************************/
 
-function getNewFirstName() {
+function getNewFirstName(firstName, lastName) {
+  first1 = this.firstName.substring(0,3);
+  first2 = this.lastName.substring(0,2);
+  newFirstName = first1 + first2.toLowerCase();
+  return newFirstName;
 
 }
 
@@ -30,8 +34,11 @@ function getNewFirstName() {
   city where they were born.
 *******************************************************************************/
 
-function getNewLastName() {
-
+function getNewLastName(momMaidenName, cityBorn) {
+  last1 = this.momMaidenName.substring(0,2)
+  last2 = this.cityBorn.substring(0,3)
+  newLastName = last1 + last2.toLowerCase()
+  return newLastName
 }
 
 /******************************************************************************
@@ -41,7 +48,15 @@ function getNewLastName() {
   letters of their real last name, reversed, and the model of their dream car.
 *******************************************************************************/
 
-function getTitle() {
+function getTitle(lastName, dreamCar) {
+  lastnum = this.lastName.length-1
+  lastlet = this.lastName.charAt(lastnum)
+  seclet = this.lastName.charAt(lastnum-1)
+  trilet = this.lastName.charAt(lastnum-2)
+  titleFirst = lastlet + seclet + trilet
+  titleW = titleFirst + this.dreamCar.toLowerCase()
+  return titleW
+
 
 }
 
@@ -52,8 +67,9 @@ function getTitle() {
   title, " of ", and the name of the street they live on.
 *******************************************************************************/
 
-function getHonorific() {
-
+function getHonorific(titleW, street) {
+  honorific = this.titleW + `of` + this.street
+  return honorific
 }
 
 /******************************************************************************
@@ -67,6 +83,30 @@ function getHonorific() {
 *******************************************************************************/
 
 function run() {
+  console.log(`--------------------------------------------------------------`)
+  console.log(`                        Fantasy Name`)
+  console.log(`--------------------------------------------------------------`)
+  console.log(`By: James Hartley`)
+  console.log(`To generate your fantasy name, please answer these questions.`)
+let firstName = READLINE.question(`Your First Name:`)
+let lastName = READLINE.question(`Your Last Name:`)
+let momMaidenName = READLINE.question(`Your mom's maiden name:`)
+let cityBorn = READLINE.question(`The city you were born in:`)
+let dreamCar = READLINE.question(`The model of your dream car:`)
+let street = READLINE.question(`The name of the street you live on:`)
+let fantasyName = newFirstName + " " + newLastName
+console.log(`Thank you for answering every question! Please wait one moment.`)
+console.log(` `)
+console.log(`CALCULATING, PLEASE WAIT...`)
+getNewFirstName(firstName, lastName)
+getNewLastName(momMaidenName, cityBorn)
+getTitle(lastName, dreamCar)
+getHonorific(titleW, street)
+let fantasyName = newFirstName + " " + newLastName
+console.log(`**************************************************************`)
+console.log(`All hail ${fantasyName}, ${honorific}!`)
+console.log(`**************************************************************`)
+
 
 }
 

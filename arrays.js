@@ -10,10 +10,12 @@ firstLast6([13, 6, 1, 2, 3]) → false
 *******************************************************************************/
 
 function firstLast6(nums) {
-
+  if((nums[0] == 6) || (nums[nums.length-1] == 6)){
+    return true
+  } else {
+    return false
+  }
 }
-
-// Remove comment below to test this function.
 //testFirstLast6();
 
 /******************************************************************************
@@ -28,11 +30,15 @@ midThree([1, 2, 3]) → [1, 2, 3]
 *******************************************************************************/
 
 function midThree(nums) {
+  num1= ((nums.length-1)/2)-1
+  num2= ((nums.length-1)/2)+2
+  
+  return nums.slice(num1, num2);
 
 }
 
 // Remove comment below to test this function.
-//testMidThree();
+testMidThree();
 
 /******************************************************************************
                                    fizzBuzz()
