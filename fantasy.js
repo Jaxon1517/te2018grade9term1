@@ -1,14 +1,6 @@
 // Author: FirstName LastName
 const READLINE = require("readline-sync");
 
-// global variables
-let firstName;
-let lastName;
-let momMaidenName;
-let cityBorn;
-let dreamCar;
-let street;
-let fantasyName;
 
 /******************************************************************************
                                   getNewFirstName()
@@ -19,9 +11,7 @@ let fantasyName;
 *******************************************************************************/
 
 function getNewFirstName(firstName, lastName) {
-  first1 = this.firstName.substring(0,3);
-  first2 = this.lastName.substring(0,2);
-  newFirstName = first1 + first2.toLowerCase();
+  let newFirstName = firstName.substring(0,3) + lastName.substring(0,2).toLowerCase();
   return newFirstName;
 
 }
@@ -35,9 +25,7 @@ function getNewFirstName(firstName, lastName) {
 *******************************************************************************/
 
 function getNewLastName(momMaidenName, cityBorn) {
-  last1 = this.momMaidenName.substring(0,2)
-  last2 = this.cityBorn.substring(0,3)
-  newLastName = last1 + last2.toLowerCase()
+  let newLastName = momMaidenName.substring(0,2) + cityBorn.substring(0,3).toLowerCase()
   return newLastName
 }
 
@@ -49,12 +37,12 @@ function getNewLastName(momMaidenName, cityBorn) {
 *******************************************************************************/
 
 function getTitle(lastName, dreamCar) {
-  lastnum = this.lastName.length-1
-  lastlet = this.lastName.charAt(lastnum)
-  seclet = this.lastName.charAt(lastnum-1)
-  trilet = this.lastName.charAt(lastnum-2)
-  titleFirst = lastlet + seclet + trilet
-  titleW = titleFirst + this.dreamCar.toLowerCase()
+  let lastnum = lastName.length-1
+  let lastlet = lastName.charAt(lastnum)
+  let seclet = lastName.charAt(lastnum-1)
+  let trilet = lastName.charAt(lastnum-2)
+  let titleFirst = lastlet + seclet + trilet
+  let titleW = titleFirst + dreamCar.toLowerCase()
   return titleW
 
 
@@ -68,7 +56,7 @@ function getTitle(lastName, dreamCar) {
 *******************************************************************************/
 
 function getHonorific(titleW, street) {
-  honorific = this.titleW + `of` + this.street
+  let honorific = titleW + ` of ` + street
   return honorific
 }
 
@@ -88,26 +76,27 @@ function run() {
   console.log(`--------------------------------------------------------------`)
   console.log(`By: James Hartley`)
   console.log(`To generate your fantasy name, please answer these questions.`)
-let firstName = READLINE.question(`Your First Name:`)
-let lastName = READLINE.question(`Your Last Name:`)
-let momMaidenName = READLINE.question(`Your mom's maiden name:`)
-let cityBorn = READLINE.question(`The city you were born in:`)
-let dreamCar = READLINE.question(`The model of your dream car:`)
-let street = READLINE.question(`The name of the street you live on:`)
-let fantasyName = newFirstName + " " + newLastName
-console.log(`Thank you for answering every question! Please wait one moment.`)
-console.log(` `)
-console.log(`CALCULATING, PLEASE WAIT...`)
-getNewFirstName(firstName, lastName)
-getNewLastName(momMaidenName, cityBorn)
-getTitle(lastName, dreamCar)
-getHonorific(titleW, street)
-let fantasyName = newFirstName + " " + newLastName
-console.log(`**************************************************************`)
-console.log(`All hail ${fantasyName}, ${honorific}!`)
-console.log(`**************************************************************`)
 
+  let firstName = READLINE.question(`Your First Name:`)
+  let lastName = READLINE.question(`Your Last Name:`)
+  let momMaidenName = READLINE.question(`Your mom's maiden name:`)
+  let cityBorn = READLINE.question(`The city you were born in:`)
+  let dreamCar = READLINE.question(`The model of your dream car:`)
+  let street = READLINE.question(`The name of the street you live on:`)
 
+  console.log(`Thank you for answering every question! Please wait one moment.`)
+  console.log(` `)
+  console.log(`CALCULATING, PLEASE WAIT...`)
+
+  let newFirstName = getNewFirstName(firstName, lastName)
+  let newLastName = getNewLastName(momMaidenName, cityBorn)
+  let titleW = getTitle(lastName, dreamCar)
+  let honorific = getHonorific(titleW, street)
+  let fantasyName = newFirstName + " " + newLastName
+
+  console.log(`**************************************************************`)
+  console.log(`All hail ${fantasyName}, ${honorific}!`)
+  console.log(`**************************************************************`)
 }
 
 // Run the program!

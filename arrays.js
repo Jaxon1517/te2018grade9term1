@@ -16,7 +16,7 @@ function firstLast6(nums) {
     return false
   }
 }
-//testFirstLast6();
+testFirstLast6();
 
 /******************************************************************************
                                    midThree()
@@ -30,11 +30,10 @@ midThree([1, 2, 3]) → [1, 2, 3]
 *******************************************************************************/
 
 function midThree(nums) {
-  num1= ((nums.length-1)/2)-1
-  num2= ((nums.length-1)/2)+2
-  
-  return nums.slice(num1, num2);
+  num1 = (nums.length / 2) - 1
+  num2 = (nums.length / 2) + 2
 
+  return nums.slice(num1, num2)
 }
 
 // Remove comment below to test this function.
@@ -60,31 +59,44 @@ fizzBuzz(1, 8) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
 fizzBuzz(1, 11) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
 *******************************************************************************/
 
-function fizzBuzz(start, end) {
-
+function fizzBuzz (start, end) {
+  let out = []
+  for (let i = start; i < end; ++i)
+  {
+    if (i % 3 === 0 && i % 5 === 0) out.push("FizzBuzz")
+    else if (i % 3 === 0) out.push("Fizz")
+    else if (i % 5 === 0) out.push("Buzz")
+    else out.push(i.toString())
+  }
+  return out
 }
-
 // Remove comment below to test this function.
-//testFizzBuzz();
+testFizzBuzz()
 
 /******************************************************************************
                                    copyEvens()
 Instructions:
 Given an array of positive numbers, return a new array of length "count"
-containing the first even numbers from the original array. The original array
-will contain at least "count" even numbers.
+containing the first even array. The original array will contain at least "count" even numbers.
 Examples:
 copyEvens([3, 2, 4, 5, 8], 2) → [2, 4]
 copyEvens([3, 2, 4, 5, 8], 3) → [2, 4, 8]
 copyEvens([6, 1, 2, 4, 5, 8], 3) → [6, 2, 4]
 *******************************************************************************/
-
+// Good!
 function copyEvens(nums, count) {
-
+  let out = []
+  for (let i = 0; i < nums.length && count > 0; ++i) {
+    if (nums[i] % 2 === 0) {
+      out.push(nums[i])
+      --count;
+    }
+  }
+  return out
 }
 
 // Remove comment below to test this function.
-//testCopyEvens();
+testCopyEvens ()
 
 /******************************************************************************
                                    zeroMax()
@@ -99,12 +111,25 @@ zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]
 zeroMax([0, 1, 0]) → [1, 1, 0]
 *******************************************************************************/
 
-function zeroMax(nums) {
-
+function zeroMax (nums) {
+  let arrayNew = []
+  for (let i = 0; i < nums.length; ++i) {
+    if (nums[i] === 0) {
+      let max = 0
+      for (let j = i; j < nums.length; ++j) {
+        if (nums[j] % 2 === 1 && nums[j] > max) {
+          max = nums[j]
+        }
+      }
+      arrayNew.push(max)
+    } else {
+      arrayNew.push(nums[i])
+    }
+  } return arrayNew
 }
 
 // Remove comment below to test this function.
-//testZeroMax();
+testZeroMax()
 
 /****************************************************************************
                                     Tests

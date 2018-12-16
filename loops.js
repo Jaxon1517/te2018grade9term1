@@ -9,19 +9,18 @@ stringTimes("Hi", 3) → "HiHiHi"
 stringTimes("Hi", 1) → "Hi"
 *******************************************************************************/
 
-function stringTimes(str, n) {
-  let larger = ""
+function stringTimes (str, n) {
+  let larger = ''
   let counter = 0
-  while(counter < n) {
+  while (counter < n) {
     larger = larger + str
     counter++
   }
   return larger
-
 }
 
 // Remove comment below to test this function.
-testStringTimes();
+testStringTimes()
 
 /******************************************************************************
                                    countXX()
@@ -34,12 +33,20 @@ countXX("xxx") → 2
 countXX("xxxx") → 3
 *******************************************************************************/
 
-function countXX(str) {
-
+function countXX (str) {
+  let count = 0
+  let lastX = false
+  for (let i = 0; i < str.length; ++i) {
+    if (str[i] === 'x') {
+      if (lastX) ++count
+      lastX = true
+    } else { lastX = false }
+  }
+  return count
 }
 
 // Remove comment below to test this function.
-//testCountXX();
+testCountXX()
 
 /******************************************************************************
                                    bobThere()
@@ -52,12 +59,17 @@ bobThere("b9b") → true
 bobThere("bac") → false
 *******************************************************************************/
 
-function bobThere(str) {
-
+function bobThere (str) {
+  for (let i = 0; i < str.length - 2; ++i) {
+    if (str[i] === 'b' && str[i + 2] === 'b') {
+      return true
+    }
+  }
+  return false
 }
 
 // Remove comment below to test this function.
-//testBobThere();
+testBobThere()
 
 /******************************************************************************
                                    countCode()
@@ -70,12 +82,17 @@ countCode("codexxcode") → 2
 countCode("cozexxcope") → 2
 *******************************************************************************/
 
-function countCode(str) {
-
+function countCode (str) {
+  let count = 0
+  for (let i = 0; i < str.length - 3; ++i) {
+    if (str[i] === 'c' && str[i + 1] === 'o' && str[i + 3] === 'e') {
+      count++
+    }
+  } return count - 1 + 1
 }
 
 // Remove comment below to test this function.
-//testCountCode();
+testCountCode()
 
 /******************************************************************************
                                    xyBalance()
@@ -91,19 +108,26 @@ xyBalance("aaxbb") → false
 xyBalance("bbb") → true
 *******************************************************************************/
 
-function xyBalance(str) {
-
+function xyBalance (str) {
+  let balanced = true
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === 'x') {
+      balanced = false
+    } else if (str[i] === 'y') {
+      balanced = true
+    }
+  }
+  return balanced
 }
-
 // Remove comment below to test this function.
-//testXyBalance();
+testXyBalance()
 
 /****************************************************************************
                                     Tests
 *****************************************************************************/
-function testStringTimes() {
-  console.log();
-  console.log("stringTimes(\"Hi\", 2) → \"HiHi\" " + "\"" + stringTimes("Hi", 2) + "\"");
+function testStringTimes () {
+  console.log()
+  console.log('stringTimes(\"Hi\", 2) → \"HiHi\" " + "\"" + stringTimes("Hi", 2) + "\"');
   console.log("stringTimes(\"Hi\", 3) → \"HiHiHi\" " + "\"" + stringTimes("Hi", 3) + "\"");
   console.log("stringTimes(\"Hi\", 1) → \"Hi\" " + "\"" + stringTimes("Hi", 1) + "\"");
   console.log("stringTimes(\"Hi\", 0) → \"\" " + "\"" + stringTimes("Hi", 0) + "\"");
